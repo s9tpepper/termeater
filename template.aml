@@ -1,0 +1,82 @@
+let TEMPS = [
+    { fg: #000000, bg: #FF2233 },
+    { fg: #000000, bg: #FF5F00 },
+    { fg: #000000, bg: #FF9933 },
+    { fg: #000000, bg: #FFCC33 },
+    { fg: #000000, bg: #FFFF33 },
+    { fg: #000000, bg: #B2FF66 },
+    { fg: #000000, bg: #66FF66 },
+]
+
+align [alignment: "center"]
+    vstack [alignment: "center",  padding: 2]
+        hstack
+            spacer
+            text "Meater Probe"
+            spacer
+
+        expand
+            spacer
+
+        text cook_info
+
+        expand
+            hstack 
+                expand [factor: 1]
+                    if internal_temp_color == 0
+                        border [ background: TEMPS[0].bg, foreground: TEMPS[0].fg ]
+                            align [alignment: "center"]
+                                text [ foreground: TEMPS[0].fg ] "internal: " internal_temp
+                    else if internal_temp_color == 1
+                        border [ background: TEMPS[1].bg, foreground: TEMPS[0].fg ]
+                            align [alignment: "center"]
+                                text [ foreground: TEMPS[0].fg ] "internal: " internal_temp
+                    else if internal_temp_color == 2
+                        border [ background: TEMPS[2].bg, foreground: TEMPS[0].fg ]
+                            align [alignment: "center"]
+                                text [ foreground: TEMPS[0].fg ] "internal: " internal_temp
+                    else if internal_temp_color == 3
+                        border [ background: TEMPS[3].bg, foreground: TEMPS[0].fg ]
+                            align [alignment: "center"]
+                                text [ foreground: TEMPS[0].fg ] "internal: " internal_temp
+                    else if internal_temp_color == 4
+                        border [ background: TEMPS[4].bg, foreground: TEMPS[0].fg ]
+                            align [alignment: "center"]
+                                text [ foreground: TEMPS[0].fg ] "internal: " internal_temp
+                    else if internal_temp_color == 5
+                        border [ background: TEMPS[5].bg, foreground: TEMPS[0].fg ]
+                            align [alignment: "center"]
+                                text [ foreground: TEMPS[0].fg ] "internal: " internal_temp
+                    else 
+                        border [ background: TEMPS[6].bg, foreground: TEMPS[0].fg ]
+                            align [alignment: "center"]
+                                text [ foreground: TEMPS[0].fg ] "internal: " internal_temp
+
+                expand [factor: 1]
+                    border [ background: #232323, foreground: #FFFFFF ]
+                        align [alignment: "center"]
+                            text "ambient: " ambient_temp
+
+                expand [factor: 1]
+                    border [ background: TEMPS[6].bg, foreground: TEMPS[6].fg ]
+                        align [alignment: "center"]
+                            text "target: " target_temp
+
+        expand
+            hstack
+                expand [factor: 1]
+                    border
+                        align [alignment: "center"]
+                            text "elapsed: " time_elapsed
+
+                expand [factor: 1]
+                    border
+                        align [alignment: "center"]
+                            text "remaining: " time_remaining
+
+        expand
+            spacer
+
+        hstack
+            spacer
+            text [foreground: #999999] "Quit [Ctrl + C]"
